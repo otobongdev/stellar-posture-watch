@@ -43,7 +43,7 @@ Load bearing, checked in `read_report` and `collect_findings` (`scripts/render_r
 | `network` | string, escaped | The header would not say which network was read. Refused. |
 | `ledger` | rendered as given | The "at one ledger" claim becomes unverifiable. Refused if absent. |
 | `exit_code` | must equal `--exit-code` | A report that disagrees with the process it came from is not rendered. Refused. |
-| `limits` | string | The footer that tells a reader what the report cannot see. Refused if absent. |
+| `limits` | string | The footer that tells a reader what the report cannot see. Refused if absent or not a string. |
 | `accounts` | array of objects | Everything. Refused if missing or not an array. |
 | `accounts[].snapshot.id` | string | Findings are keyed by account; without an id the row cannot be named. Refused. |
 | `accounts[].findings[].rule_id` | non-empty string | Sorted, grouped and accepted-key matching all use it. Refused if missing. |
