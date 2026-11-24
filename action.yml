@@ -228,10 +228,10 @@ runs:
           "${args[@]}"
 
     - name: Upload Gauge's diagnostics when the run failed outright
-      if: failure() || steps.gauge.outputs.exit-code == '2' || steps.gauge.outputs.exit-code == '3'
+      if: steps.gauge.outputs.exit-code == '2' || steps.gauge.outputs.exit-code == '3'
       uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
       with:
-        name: gauge-diagnostics
+        name: gauge-diagnostics-audit-exit-${{ steps.gauge.outputs.exit-code }}
         path: ${{ runner.temp }}/gauge-stderr.log
         if-no-files-found: ignore
         retention-days: 7
